@@ -7,16 +7,20 @@ public class StatsService {
 
         for (int i = 0; i < sales.length; i++) {
             sum = sum + sales[i];
-            }
+        }
 
         return sum;
     }
 
-    public long middleValueSales(long[] sales) {
-        long sum = sumSales(sales);
-        long mid = sum / sales.length;
+    public long averageSales(long[] sales) {
+        long sum = 0;
 
-        return mid;
+        for (int i = 0; i < sales.length; i++) {
+            sum = sum + sales[i];
+        }
+        long average = sum / sales.length;
+
+        return average;
     }
 
     public int maxSales(long[] sales) {
@@ -44,30 +48,30 @@ public class StatsService {
     }
 
 
-    public long belowMiddleValueSales(long[] sales) {
-        long mid = middleValueSales(sales);
-        long belowMid = 0;
+    public long belowAverageSales(long[] sales) {
+        long average = averageSales(sales);
+        long belowAverage = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (mid > sales[i]) {
-                belowMid = i;
+            if (sales[i] < average) {
+                belowAverage = i++;
             }
         }
 
-        return belowMid;
+        return belowAverage;
     }
 
-    public long overMiddleValueSales(long[] sales) {
-        long mid = middleValueSales(sales);
-        long overMid = 0;
+    public long overAverageSales(long[] sales) {
+        long average = averageSales(sales);
+        long overAverage = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            if (mid < sales[i]) {
-                overMid = i;
+            if (sales[i] > average) {
+                overAverage = i++;
             }
         }
 
-        return overMid;
+        return overAverage;
     }
 }
 
